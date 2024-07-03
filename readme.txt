@@ -18,6 +18,9 @@ add prompts on install to file browse to Module Location
 References:
 
 
+library info for later:
+https://help.autodesk.com/view/MAYAUL/2022/ENU/?guid=GUID-C24973A1-F6BF-4614-BC3A-9F1A51D78F4C
+
 Path Variables 
 https://help.autodesk.com/view/MAYAUL/2022/ENU/?guid=GUID-228CCA33-4AFE-4380-8C3D-18D23F7EAC72
 
