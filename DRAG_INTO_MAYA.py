@@ -7,9 +7,6 @@ import os
 VersionNumber = "0.1"
 PathToModule = "C:\\Users\\west\\OneDrive\\Desktop\\Maya-Module\\WestsMayaModule"
 
-#TODO add prompts for shelves to add
-
-
 #Button Callback that takes string and installs .mod file
 def FinishInstall(menuCalling):
     print("-----------------Making .Mod---------------------")
