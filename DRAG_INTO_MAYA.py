@@ -1,8 +1,14 @@
 import maya.cmds as cmds
 import os
 
+#should be shoved in config file
+#can have shelves that can be added save in as well
+#and like prefered save export locaitons for different shelf things
 VersionNumber = "0.1"
 PathToModule = "C:\\Users\\west\\OneDrive\\Desktop\\Maya-Module\\WestsMayaModule"
+
+#TODO add prompts for shelves to add
+
 
 #Button Callback that takes string and installs .mod file
 def FinishInstall(menuCalling):
