@@ -13,7 +13,6 @@ add shelf configuration to config
 add preferred export locations to config
 
 add prompts on install for which shelves to add
-add prompts on install to file browse to Module Location
 
 References:
 
