@@ -32,11 +32,16 @@ class InstallWindow:
         cmds.text("Finishing the process will restart Maya")    
         cmds.button(label="Finish", command = buttonCallback)
 
-
 def FinishInstall(selectedPath, moduleName, modulePath, versionNumber):
     print("-----------------Making .Mod---------------------")
     print("Final Selected Path " + selectedPath)
-    modFile = open(selectedPath + "/WestsModules.mod", "x")
+
+    filename = selectedPath + "/WestsModules.mod"
+
+    if os.path.exists(filename):
+        os.remove(filename)
+
+    modFile = open(filename, "x")
     line = "+ " + moduleName + " " + versionNumber + " " + modulePath
     modFile.write(line)
     modFile.close()

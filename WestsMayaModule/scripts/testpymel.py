@@ -12,6 +12,6 @@ for i in range(0,10):
         cmds.scale(1,y,1, object)
         array.append(object)
         
-cmds.combine(
+#cmds.combine()
         
 cmds.delete(cube)

@@ -2,8 +2,8 @@ This repo is a collection of python scripts and plugins created for Autodesk may
 I will try and outline any complex processes in this read me through documentation.
 
 Installation
-1. Replace PathToModule in .config with correct path 
-2. Drag and Drop DRAG_INTO_MAYA.py into a running maya repo
+1. Drag and Drop DRAG_INTO_MAYA.py into a Running Maya Window
+2. Choose Shelf Tools to install
 
 TODO:
 make config file

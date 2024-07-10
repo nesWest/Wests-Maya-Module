@@ -1,0 +1,3 @@
+WestTestShelf
+Restart,restart.png,import RestartMaya
+Sphere,sphere.png,cmds.sphere()
