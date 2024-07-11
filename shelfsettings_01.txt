@@ -1,4 +1,5 @@
 WestTestShelf
 Restart,Restarts Maya On Click,restart.png,import RestartMaya
+ShowIcons,Shows Icons in Window,out_MASH_Utilities_200.png,import ShowIcons
 Sphere,Creates a sphere,sphere.png,cmds.sphere()
-GenerateBoxes,Creates several randomized boxes,sphere.png,import testpymel
+GenerateBoxes,Creates several randomized boxes,out_floatConstant.png,import testpymel
