@@ -1,3 +1,4 @@
 WestTestShelf
-Restart,restart.png,import RestartMaya
-Sphere,sphere.png,cmds.sphere()
+Restart,Restarts Maya On Click,restart.png,import RestartMaya
+Sphere,Creates a sphere,sphere.png,cmds.sphere()
+GenerateBoxes,Creates several randomized boxes,sphere.png,import testpymel

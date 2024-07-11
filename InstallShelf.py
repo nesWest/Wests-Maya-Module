@@ -26,11 +26,11 @@ def InstallShelf(settings = "shelfsettings_01.txt"):
     content=file.readline()
     while content:
         splitContent = content.split(",")
-        shelf_edit = cmds.shelfButton(parent=dynamicshelf, label = splitContent[0], annotation="test", image1=splitContent[1], command=splitContent[2] )
+        shelf_edit = cmds.shelfButton(parent=dynamicshelf, label = splitContent[0], annotation=splitContent[1], image1=splitContent[2], command=splitContent[3] )
         content=file.readline()
 
     #read in excel doc for shelfbuttons
     #shelf_edit = cmds.shelfButton(parent=dynamicshelf, label = "Name", annotation='Create a sphere.', image1='restart.png', command='cmds.sphere()' )
 
-if __name__ == "__main__":
-    InstallShelf()
+
+InstallShelf()
