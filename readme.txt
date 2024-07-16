@@ -3,15 +3,13 @@ I will try and outline any complex processes in this read me through documentati
 
 Installation
 1. Drag and Drop DRAG_INTO_MAYA.py into a Running Maya Window
-2. Choose Shelf Tools to install
+--2. Choose Shelf Tools to install-- Not complete
 
 TODO:
-make config file
-add version number to config
-add PathToModule to config
+
+add Better Updating Process (now must delete shelf save then DRAG_INTO_MAYA)
 add shelf configuration to config
 add preferred export locations to config
-
 add prompts on install for which shelves to add
 
 References:

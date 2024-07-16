@@ -10,7 +10,7 @@ def InstallShelf(settings = "shelfsettings_01.txt"):
     gShelfTopLevel = maya.mel.eval("global string $gShelfTopLevel;$tmp_1=$gShelfTopLevel;")
     if cmds.shelfLayout(shelfname, p=gShelfTopLevel, ex=True):
         dynamicshelf = shelfname
-        cmds.deleteUI(shelfname)
+        cmds.deleteUI(gShelfTopLevel + "|" +shelfname)
     
     dynamicshelf = cmds.shelfLayout(shelfname, p=gShelfTopLevel)
 
