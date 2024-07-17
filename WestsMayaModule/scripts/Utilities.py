@@ -1,5 +1,6 @@
 import os
 import maya.cmds as cmds
+import maya.mel
 import random
 
 def ShowIcons():
@@ -17,7 +18,7 @@ def ShowIcons():
                 if f.endswith(".png") or f.endswith(".jpeg"):
                     cmds.image( image=f, annotation=f)
         except:
-            print("Err")
+            print("EOF")
             
     cmds.showWindow("Icons")
 
@@ -44,3 +45,4 @@ def RndTest():
     #cmds.combine()
             
     cmds.delete(cube)
+

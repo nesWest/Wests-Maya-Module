@@ -1,8 +1,9 @@
 WestTestShelf
-Sphere,Creates a sphere,sphere.png,import maya.cmds as cmds; cmds.sphere()
+UpdatesShelves,Updates Shelves for wests module,sphere.png,from ShelfTools import RefreshShelves; RefreshShelves()
 Restart,Restarts Maya On Click,restart.png,from Utilities import RestartMaya; RestartMaya()
 ShowIcons,Shows Icons in Window,out_MASH_Utilities_200.png,from Utilities import ShowIcons; ShowIcons()
 GenerateBoxes,Creates several randomized boxes,out_floatConstant.png,from Utilities import RndTest; RndTest()
 Export Character,Exports Character Skeletal Mesh,out_USD_SkelAnimation_200.png,from ExportTools import CharacterExporter; CharacterExporter()
 Export Animation,Exports a Animation for a skeletal Mesh,out_USD_SkelAnimation_200.png,from ExportTools import AnimationExporter; AnimationExporter()
 Batch Export,Batch Export Meshs?,out_USD_SkelAnimation_200.png,from ExportTools import BatchExporter; BatchExporter()
+Sphere,Creates a sphere,sphere.png,import maya.cmds as cmds; cmds.sphere()

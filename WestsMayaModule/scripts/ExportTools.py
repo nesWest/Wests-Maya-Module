@@ -20,17 +20,12 @@ def CharacterExporter():
     if not savePath :
         return
 
-
     #TODO Add Checks for forced naming conventions here
-
-    #Export Settings
-
 
     options = "v={0}"
     FBXOption("false")
     cmds.file(savePath, force=True, op=options, typ="FBX export", pr=True, es=True)
     print("Character Exporter (InProgress)")
-
 
 def AnimationExporter():
     #Deletes namespace
@@ -43,7 +38,7 @@ def AnimationExporter():
     savePath = GetFilepath()
 
     if not savePath :
-        ReaddNamespace()
+        ReAddNamespace() #gotta abort so readd
         return
 
     #TODO Add Checks for forced naming conventions here
@@ -53,7 +48,7 @@ def AnimationExporter():
     cmds.file(savePath, force=True, op=options, typ="FBX export", pr=True, es=True)
     
     #Re Add Namespace to rig
-    ReaddNamespace()
+    ReAddNamespace()
 
     #- Button to put namespace back
     print("Animation Exporter (InProgress)")
@@ -75,7 +70,7 @@ def RemoveNamespace():
     cmds.namespace( rel=True )
     cmds.select ("game_root")
 
-def ReaddNamespace():
+def ReAddNamespace():
     #Put namespace back
     cmds.namespace( set=':')
     cmds.namespace( rel=False )
@@ -93,7 +88,6 @@ def FBXOption(animation = "false"):
     mel.eval("FBXExportSmoothingGroups -v false")
     mel.eval("FBXExportUpAxis y")
 
-
 def GetFilepath():
     #Assume file and name
     fileName = cmds.file(q=True, sn=True).replace(".*", "")
@@ -110,5 +104,4 @@ def GetFilepath():
     savePath = savePath[0].replace('*', 'fbx')
     return savePath
 
-   
 
