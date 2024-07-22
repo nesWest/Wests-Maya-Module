@@ -1,8 +1,23 @@
+"""
+	file        ShelfTools.py
+
+	date        07/21/2024
+
+	authors     West Foulks (WestFoulks@gmail.com)
+
+	brief       Contains a set of functions to help create and manage this modules shelf tools
+                TODO: Create XML or Json File for shelf information
+"""
 import os
 import maya.cmds as cmds
 import maya.mel
 
-def RefreshShelves(settings = "shelfsettings_01.txt"):
+"""
+    Name        RefeshShelves
+    Desc        When Clicked will Refesh all shelves adding new icons where needed.
+    Input       Shelf Information file Name
+"""
+def RefreshShelves(settings = "shelfsettings_01.txt") -> None:
 
     #TODO ensure it updates correctly
     #TODO add mutli shelf functionality and xml functionality
