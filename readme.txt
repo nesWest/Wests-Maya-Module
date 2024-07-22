@@ -1,6 +1,8 @@
 This repo is a collection of Python scripts and Plug-ins created for Autodesk Maya.
 It is currently in progress and not complete.
 
+Created for MAYA 2024
+
 Installation
 1. Drag and Drop DRAG_INTO_MAYA.py into a Running Maya Window
 --2. Choose Shelf Tools to install-- Not complete
