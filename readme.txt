@@ -1,20 +1,18 @@
-This repo is a collection of python scripts and plugins created for Autodesk maya
-I will try and outline any complex processes in this read me through documentation.
+This repo is a collection of Python scripts and Plug-ins created for Autodesk Maya.
+It is currently in progress and not complete.
 
 Installation
 1. Drag and Drop DRAG_INTO_MAYA.py into a Running Maya Window
 --2. Choose Shelf Tools to install-- Not complete
 
 TODO:
-
 add Better Updating Process (now must delete shelf save then DRAG_INTO_MAYA)
 add shelf configuration to config
-add preferred export locations to config
+add Rewrite shelf settings as an xml or JSON document.
+add preferred export locations to the config
 add prompts on install for which shelves to add
 
-References:
-
-
+References / References:
 library info for later:
 https://help.autodesk.com/view/MAYAUL/2022/ENU/?guid=GUID-C24973A1-F6BF-4614-BC3A-9F1A51D78F4C
 
