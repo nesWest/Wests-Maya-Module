@@ -21,7 +21,7 @@ https://help.autodesk.com/view/MAYAUL/2022/ENU/?guid=GUID-C24973A1-F6BF-4614-BC3
 Path Variables 
 https://help.autodesk.com/view/MAYAUL/2022/ENU/?guid=GUID-228CCA33-4AFE-4380-8C3D-18D23F7EAC72
 
-Module Use Case Explanations 
+Module Use Case Source
 https://learncreategame.com/techart/maya-environment-setup/#:~:text=mod%20file%20in%20a%20modules,the%20Maya%20environment%20during%20startup.
 https://help.autodesk.com/view/MAYAUL/2022/ENU/?guid=Maya_SDK_Distributing_Maya_Plug_ins_DistributingUsingModules_CreatingAModulePackage_html
 https://benmorgananimation.wordpress.com/2018/04/20/script-distribution-using-maya-modules/
