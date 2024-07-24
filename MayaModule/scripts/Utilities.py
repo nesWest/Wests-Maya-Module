@@ -1,4 +1,4 @@
-"""
+'''
 	file        utilities.py
 
 	date        07/21/2024
@@ -7,44 +7,52 @@
 
 	brief       Contains a set of functions to help with mutliple varied maya 
                 tasks. Should Eventually be moved into scripts that more relate to the functions.
-"""
+'''
 import os
 import maya.cmds as cmds
 import maya.mel
 import random
+import logging
+logger = logging.getLogger(__name__)
 
 
-"""
+'''
     Name        ShowIcons
     Desc        Finds .png and .jpeg ins speciific Icon Directorys and displays 
                 them all in a window with their name as a annotation
-"""
+'''
 def ShowIcons() -> None:
-    iconsWindow = cmds.window("Icons", widthHeight=(200, 55))
+
+    try: #if window is already open dont try again
+        iconsWindow = cmds.window('Icons', widthHeight=(200, 55))
+    except:
+        logger.warning('window already open')
+        return
+    
     scrollLayout = cmds.scrollLayout( horizontalScrollBarThickness=16, verticalScrollBarThickness=16)
     cmds.gridLayout( numberOfColumns=40, cellWidthHeight=(40, 40) )
 
-    paths = os.environ['XBMLANGPATH'].split(";")
+    paths = os.environ['XBMLANGPATH'].split(';')
 
     for path in paths:
-        print(path.replace("/","\\") + "\\")
+        print(path.replace('/','\\') + '\\')
         
         try :
-            for f in os.listdir(path.replace("/","\\")):
-                if f.endswith(".png") or f.endswith(".jpeg"):
+            for f in os.listdir(path.replace('/','\\')):
+                if f.endswith('.png') or f.endswith('.jpeg'):
                     cmds.image( image=f, annotation=f)
         except:
-            print("EOF")
+            print('EOF')
             
-    cmds.showWindow("Icons")
+    cmds.showWindow('Icons')
 
-"""
+'''
     Name        Restart Maya
     Desc        Restarts Maya after saving user preferences.
                 This is slightly unstable and needs improving
-"""
+'''
 def RestartMaya() -> None:
-    print("Restarting Maya")
+    logger.warning('Restarting Maya')
 
 
     filename = cmds.file(q=True, sn=True) #current file name to try and relaunch
@@ -52,13 +60,13 @@ def RestartMaya() -> None:
     cmds.savePrefs() #save user prefs
     cmds.quit()      #prompt user to save the maya file
 
-    maya_executable = os.environ['MAYA_LOCATION'] + "/bin/maya.exe" #EXE location
+    maya_executable = os.environ['MAYA_LOCATION'] + '/bin/maya.exe' #EXE location
     os.spawnl(os.P_NOWAIT, maya_executable, '-file', filename) #Launches Maya
 
-"""
+'''
     Name        RNDTest
     Desc        Random test function to fill Shelf at the moment will remove in the future.
-"""
+'''
 def RndTest() -> None:
     cube = cmds.polyCube()
     array = []

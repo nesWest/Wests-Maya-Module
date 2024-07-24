@@ -8,31 +8,36 @@
                 "label": "Update Shelves",
                 "annotation": "Updates Shelves for wests module",
                 "image1": "sphere.png",
-                "command": "from ShelfTools import RefreshShelves; RefreshShelves()"
+                "command": "from ShelfTools import RefreshShelves; RefreshShelves()",
+                "enableCommandRepeat":false
             },
             {
                 "label": "Restart Maya",
                 "annotation": "Restarts Maya On Click (Unstable)",
                 "image1": "restart.png",
-                "command": "from Utilities import RestartMaya; RestartMaya()"
+                "command": "from Utilities import RestartMaya; RestartMaya()",
+                "enableCommandRepeat":false
             },
             {
                 "label": "Show Icons",
                 "annotation": "Shows Icons in Window",
                 "image1": "out_MASH_Utilities_200.png",
-                "command": "from Utilities import ShowIcons; ShowIcons()"
+                "command": "from Utilities import ShowIcons; ShowIcons()",
+                "enableCommandRepeat":false
             },
             {
                 "label": "Export Character",
                 "annotation": "Exports Character Skeletal Mesh",
                 "image1": "out_USD_SkelAnimation_200.png",
-                "command": "from ExportTools import CharacterExporter; CharacterExporter()"
+                "command": "from ExportTools import CharacterExporter; CharacterExporter()",
+                "enableCommandRepeat":false
             },
             {
                 "label": "Export Animation",
                 "annotation": "Exports a Animation for a skeletal Mesh",
                 "image1": "out_USD_SkelAnimation_200.png",
-                "command": "from ExportTools import AnimationExporter; AnimationExporter()"
+                "command": "from ExportTools import AnimationExporter; AnimationExporter()",
+                "enableCommandRepeat":false
             }
         ],
         "ExportTools": [
@@ -40,13 +45,15 @@
                 "label": "Export Character",
                 "annotation": "Exports Character Skeletal Mesh",
                 "image1": "out_USD_SkelAnimation_200.png",
-                "command": "from ExportTools import CharacterExporter; CharacterExporter()"
+                "command": "from ExportTools import CharacterExporter; CharacterExporter()",
+                "enableCommandRepeat":true
             },
             {
                 "label": "Export Animation",
                 "annotation": "Exports a Animation for a skeletal Mesh",
                 "image1": "out_USD_SkelAnimation_200.png",
-                "command": "from ExportTools import AnimationExporter; AnimationExporter()"
+                "command": "from ExportTools import AnimationExporter; AnimationExporter()",
+                "enableCommandRepeat":true
             }
         ]
 

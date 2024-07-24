@@ -5,22 +5,22 @@ import os
 class InstallWindow:       
     def __init__(self, modulePath):
         self.modulePath = modulePath
-        self.VersionNumber = "0.1"
-        self.paths = os.environ['MAYA_MODULE_PATH'].split(";")
+        self.VersionNumber = '0.1'
+        self.paths = os.environ['MAYA_MODULE_PATH'].split(';')
         
         #Gets Paths
-        print("-------Found Paths------------------------------")
+        print('-------Found Paths------------------------------')
         for path in self.paths:
             print(path)
-        print("------------------------------------------------")
-        print("\n")
+        print('------------------------------------------------')
+        print('\n')
 
         #options Menu
-        cmds.window("ModuleInstallPath")
-        cmds.showWindow("ModuleInstallPath")
+        cmds.window('ModuleInstallPath')
+        cmds.showWindow('ModuleInstallPath')
         cmds.columnLayout()
 
-        self.options = cmds.optionMenu(label="Possible Paths")
+        self.options = cmds.optionMenu(label='Possible Paths')
         cmds.optionMenu(self.options, edit=1)
 
         for path in self.paths:
@@ -28,26 +28,26 @@ class InstallWindow:
 
         def buttonCallback(arg):
             SelectedPath = cmds.optionMenu(self.options, query=True, value=True)
-            FinishInstall(SelectedPath,"WestsMayaModule", self.modulePath, self.VersionNumber)
+            FinishInstall(SelectedPath,'WestsMayaModule', self.modulePath, self.VersionNumber)
 
-        cmds.text("Finishing the process will restart Maya")    
-        cmds.button(label="Finish", command = buttonCallback)
+        cmds.text('Finishing the process will restart Maya')    
+        cmds.button(label='Install', command = buttonCallback)
 
 def FinishInstall(selectedPath, moduleName, modulePath, versionNumber):
-    print("-----------------Making .Mod---------------------")
-    print("Final Selected Path " + selectedPath)
+    print('-----------------Making .Mod---------------------')
+    print('Final Selected Path ' + selectedPath)
 
-    filename = selectedPath + "/WestsModules.mod"
+    filename = selectedPath + '/WestsModules.mod'
 
     if os.path.exists(filename):
         os.remove(filename)
 
-    modFile = open(filename, "x")
-    line = "+ " + moduleName + " " + versionNumber + " " + modulePath
+    modFile = open(filename, 'x')
+    line = '+ ' + moduleName + ' ' + versionNumber + ' ' + modulePath
     modFile.write(line)
     modFile.close()
 
-    print("Restarting Maya")
+    print('Restarting Maya')
     RestartMaya()
 
 
