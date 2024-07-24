@@ -115,7 +115,7 @@ def ReAddNamespace() -> None:
     Input       If the export options needed are for animations.
 """
 def FBXOption(animation = "false") -> None:
-    #TODO could store settings in file
+    #TODO could store settings in module-data.json
     mel.eval("FBXExportSmoothMesh -v true")
     mel.eval("FBXExportUseSceneName -v false")
     mel.eval("FBXExportCameras -v false")
