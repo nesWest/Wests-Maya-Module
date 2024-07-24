@@ -1,0 +1,58 @@
+{
+    "info": {
+        "VersionNumber": 1.0,
+        "ExportLocations": {
+            "Character": "empty",
+            "Animation": "empty"
+        }
+    },
+    "shelves": {
+        "WestTestShelf": [
+            {
+                "label": "Update Shelves",
+                "annotation": "Updates Shelves for wests module",
+                "image1": "sphere.png",
+                "command": "from ShelfTools import RefreshShelves; RefreshShelves()"
+            },
+            {
+                "label": "Restart Maya",
+                "annotation": "Restarts Maya On Click (Unstable)",
+                "image1": "restart.png",
+                "command": "from Utilities import RestartMaya; RestartMaya()"
+            },
+            {
+                "label": "Show Icons",
+                "annotation": "Shows Icons in Window",
+                "image1": "out_MASH_Utilities_200.png",
+                "command": "from Utilities import ShowIcons; ShowIcons()"
+            },
+            {
+                "label": "Export Character",
+                "annotation": "Exports Character Skeletal Mesh",
+                "image1": "out_USD_SkelAnimation_200.png",
+                "command": "from ExportTools import CharacterExporter; CharacterExporter()"
+            },
+            {
+                "label": "Export Animation",
+                "annotation": "Exports a Animation for a skeletal Mesh",
+                "image1": "out_USD_SkelAnimation_200.png",
+                "command": "from ExportTools import AnimationExporter; AnimationExporter()"
+            }
+        ],
+        "ExportTools": [
+            {
+                "label": "Export Character",
+                "annotation": "Exports Character Skeletal Mesh",
+                "image1": "out_USD_SkelAnimation_200.png",
+                "command": "from ExportTools import CharacterExporter; CharacterExporter()"
+            },
+            {
+                "label": "Export Animation",
+                "annotation": "Exports a Animation for a skeletal Mesh",
+                "image1": "out_USD_SkelAnimation_200.png",
+                "command": "from ExportTools import AnimationExporter; AnimationExporter()"
+            }
+        ]
+
+    }
+}
