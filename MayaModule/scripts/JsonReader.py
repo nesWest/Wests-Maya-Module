@@ -1,15 +1,16 @@
 import json
 import os
 
-dataName = 'module-data.json'
+moduleDataName = 'module-data.json'
+userDataName = 'user-data.json'
 
-def GetPath() -> str:
-    path = os.path.dirname(__file__).replace("MayaModule\\scripts","") 
-    path += dataName
+def GetPath(file : str) -> str:
+    path = os.path.dirname(__file__).replace('MayaModule\\scripts','') #depends on where this is called from urg
+    path += file
     return path
 
-def GetData() -> dict:
-    path = GetPath()
+def GetData(file : str = moduleDataName ) -> dict:
+    path = GetPath(file)
 
     with open(path, 'r') as file:
         data = json.load(file)
@@ -18,5 +19,10 @@ def GetData() -> dict:
     return data
 
 def GetShelves() -> dict:
-    return GetData()['shelves']
+    return GetData()['Shelves']
 
+def GetVersionNumber() -> float :
+    return GetData()['Info']['VersionNumber']
+
+def UserData_NewExport(dictionary : dict) :
+    return

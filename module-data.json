@@ -1,12 +1,8 @@
 {
-    "info": {
-        "VersionNumber": 1.0,
-        "ExportLocations": {
-            "Character": "empty",
-            "Animation": "empty"
-        }
+    "Info": {
+        "VersionNumber": 1.0
     },
-    "shelves": {
+    "Shelves": {
         "WestTestShelf": [
             {
                 "label": "Update Shelves",
