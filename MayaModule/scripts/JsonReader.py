@@ -40,7 +40,7 @@ def GetData(file : str = moduleDataName ) -> dict:
         data = json.load(file)
         file.close()
     except FileNotFoundError:
-       print("No .JSON Found Writing New")
+       print("No .JSON Found")
        data = {}
 
     return data
@@ -67,7 +67,10 @@ def GetVersionNumber() -> float :
 def UserData_NewExport(dictionary : dict) -> None:
     data = GetData(userDataName)
 
-    data["ExportLocations"].update(dictionary)
+    try:
+      data['ExportLocations'].update(dictionary)
+    except:
+       data.update({'ExportLocations':dictionary})
 
     path = GetPath(userDataName)
     with open(path, 'w') as file:
@@ -85,8 +88,9 @@ def UserData_GetExportLocation(exportInfo : str) -> str:
     data = GetData(userDataName)
 
     try:
-      data = str( data["ExportLocations"][exportInfo] )
+      data = str( data['ExportLocations'][exportInfo] )
     except:
       data = ""
 
     return data
+

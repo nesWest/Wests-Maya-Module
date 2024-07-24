@@ -29,7 +29,6 @@ def CharacterExporter() -> None:
     cmds.select('*_Meshes', add=True)
 
     savePath = GetFilepath('Character')
-
     if not savePath :
         return
 
@@ -38,7 +37,6 @@ def CharacterExporter() -> None:
     options = "v={0}"
     FBXOption("false")
     cmds.file(savePath, force=True, op=options, typ="FBX export", pr=True, es=True)
-    print("Character Exporter (InProgress)")
 
 """
     Name        Animation Export
@@ -53,7 +51,6 @@ def AnimationExporter() -> None:
     cmds.select('*_Meshes', add=True)
 
     savePath = GetFilepath('Animation')
-
     if not savePath :
         ReAddNamespace() #gotta abort so readd
         return
@@ -67,8 +64,6 @@ def AnimationExporter() -> None:
     #Re Add Namespace to rig
     ReAddNamespace()
 
-    #- Button to put namespace back
-    print("Animation Exporter (InProgress)")
 
 """
     Name        Batch Export
@@ -135,8 +130,9 @@ def FBXOption(animation = "false") -> None:
 """
 def GetFilepath(type : str) -> str:
     #Assume file and name
-    fileName = cmds.file(q=True, sn=True)
-    lastDirectoryUsed = jReader.UserData_GetExportLocation(type).replace(".*", fileName)  #Specific to This Function
+    fileName = os.path.basename(cmds.file(q=True, sn=True))
+    lastDirectoryUsed = jReader.UserData_GetExportLocation(type) + '/' +fileName  #Specific to This Function
+    print(lastDirectoryUsed)
 
     #aensure its correct
     singleFilter = "*.fbx"
@@ -147,11 +143,10 @@ def GetFilepath(type : str) -> str:
         return None 
     else:
         savePath = savePath[0]
-    
-    print(savePath)
-    jReader.UserData_NewExport({type:savePath})
 
-    savePath = savePath.replace('*', 'fbx')
+    jReader.UserData_NewExport({type:os.path.dirname(savePath)})
+
+    savePath = savePath.replace('.*', 'fbx')
     return savePath
 
 
