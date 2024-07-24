@@ -9,9 +9,8 @@ Installation
 
 TODO:
 add Better Updating Process (now must delete shelf save then DRAG_INTO_MAYA)
+add save location of .mod to user-data.json for easy deletion or updating
 add shelf configuration to config
-add Rewrite shelf settings as an xml or JSON document.
-add preferred export locations to the config
 add prompts on install for which shelves to add
 
 References / References:
