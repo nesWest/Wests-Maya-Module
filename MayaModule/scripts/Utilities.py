@@ -45,11 +45,15 @@ def ShowIcons() -> None:
 """
 def RestartMaya() -> None:
     print("Restarting Maya")
-    maya_executable = os.environ['MAYA_LOCATION'] + "/bin/maya.exe" #EXE location
+
+
     filename = cmds.file(q=True, sn=True) #current file name to try and relaunch
+
     cmds.savePrefs() #save user prefs
-    os.spawnl(os.P_NOWAIT, maya_executable, '-file', filename) #Launches Maya
     cmds.quit()      #prompt user to save the maya file
+
+    maya_executable = os.environ['MAYA_LOCATION'] + "/bin/maya.exe" #EXE location
+    os.spawnl(os.P_NOWAIT, maya_executable, '-file', filename) #Launches Maya
 
 """
     Name        RNDTest
