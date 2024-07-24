@@ -16,6 +16,7 @@
 import os
 import maya.cmds as cmds
 import maya.mel as mel
+import JsonReader as jReader
 
 """
     Name        Character Export
@@ -27,7 +28,7 @@ def CharacterExporter() -> None:
     cmds.select('game_root')
     cmds.select('*_Meshes', add=True)
 
-    savePath = GetFilepath()
+    savePath = GetFilepath('Character')
 
     if not savePath :
         return
@@ -51,7 +52,7 @@ def AnimationExporter() -> None:
     cmds.select('game_root')
     cmds.select('*_Meshes', add=True)
 
-    savePath = GetFilepath()
+    savePath = GetFilepath('Animation')
 
     if not savePath :
         ReAddNamespace() #gotta abort so readd
@@ -132,10 +133,10 @@ def FBXOption(animation = "false") -> None:
     Desc        prompts user for filepath
     return      string that contains the full filepath includes name of file to save.
 """
-def GetFilepath() -> str:
+def GetFilepath(type : str) -> str:
     #Assume file and name
-    fileName = cmds.file(q=True, sn=True).replace(".*", "")
-    lastDirectoryUsed = 'C:/Users/west/Downloads/' + fileName #Specific to This Function
+    fileName = cmds.file(q=True, sn=True)
+    lastDirectoryUsed = jReader.UserData_GetExportLocation(type).replace(".*", fileName)  #Specific to This Function
 
     #aensure its correct
     singleFilter = "*.fbx"
@@ -144,8 +145,13 @@ def GetFilepath() -> str:
     #check for cancel
     if not savePath:
         return None 
+    else:
+        savePath = savePath[0]
+    
+    print(savePath)
+    jReader.UserData_NewExport({type:savePath})
 
-    savePath = savePath[0].replace('*', 'fbx')
+    savePath = savePath.replace('*', 'fbx')
     return savePath
 
 
