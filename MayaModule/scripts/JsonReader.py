@@ -11,6 +11,9 @@
 import json
 import os
 
+import logging
+logger = logging.getLogger(__name__)
+
 moduleDataName = 'module-data.json'
 userDataName = 'user-data.json'
 
@@ -40,7 +43,7 @@ def GetData(file : str = moduleDataName ) -> dict:
         data = json.load(file)
         file.close()
     except FileNotFoundError:
-       print('No .JSON Found')
+       logger.warning('No user-data.json Found.')
        data = {}
 
     return data

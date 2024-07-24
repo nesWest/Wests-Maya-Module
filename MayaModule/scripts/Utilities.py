@@ -12,6 +12,7 @@ import os
 import maya.cmds as cmds
 import maya.mel
 import random
+
 import logging
 logger = logging.getLogger(__name__)
 
@@ -35,14 +36,13 @@ def ShowIcons() -> None:
     paths = os.environ['XBMLANGPATH'].split(';')
 
     for path in paths:
-        print(path.replace('/','\\') + '\\')
-        
+        #print(path.replace('/','\\') + '\\')
         try :
             for f in os.listdir(path.replace('/','\\')):
                 if f.endswith('.png') or f.endswith('.jpeg'):
                     cmds.image( image=f, annotation=f)
         except:
-            print('EOF')
+            pass #'EOF'
             
     cmds.showWindow('Icons')
 

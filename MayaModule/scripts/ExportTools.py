@@ -17,7 +17,8 @@ import os
 import maya.cmds as cmds
 import maya.mel as mel
 import JsonReader as jReader
-
+import logging
+logger = logging.getLogger(__name__)
 '''
     Name        Character Export
     Desc        Helps streamline exporting a character rig
@@ -51,6 +52,7 @@ def AnimationExporter() -> None:
     cmds.select('*_Meshes', add=True)
 
     savePath = GetFilepath('Animation')
+
     if not savePath :
         ReAddNamespace() #gotta abort so readd
         return
@@ -72,7 +74,7 @@ def AnimationExporter() -> None:
 '''
 def BatchExporter() -> None:
     #By file set, not folder.
-    print('Batch Exporter (Incomplete)')
+    logger.error('Batch Exporter (Incomplete)')
 
 
 '''
@@ -132,7 +134,6 @@ def GetFilepath(type : str) -> str:
     #Assume file and name
     fileName = os.path.basename(cmds.file(q=True, sn=True))
     lastDirectoryUsed = jReader.UserData_GetExportLocation(type) + '/' +fileName  #Specific to This Function
-    print(lastDirectoryUsed)
 
     #aensure its correct
     singleFilter = '*.fbx'
