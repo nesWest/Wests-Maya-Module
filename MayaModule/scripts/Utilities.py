@@ -53,8 +53,6 @@ def ShowIcons() -> None:
 '''
 def RestartMaya() -> None:
     logger.warning('Restarting Maya')
-
-
     filename = cmds.file(q=True, sn=True) #current file name to try and relaunch
 
     cmds.savePrefs() #save user prefs

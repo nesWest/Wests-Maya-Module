@@ -1,4 +1,3 @@
-from InstallWindow import InstallWindow
 import MayaModule.scripts.ModuleWindow as MW
 import maya.cmds as cmds
 import os

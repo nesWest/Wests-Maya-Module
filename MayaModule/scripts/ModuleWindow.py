@@ -133,6 +133,7 @@ class HelloQTWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
                 os.remove(filename)
 
         #Remove Shelves
+        ShelfTools.RemoveAllShelves()
 
         Utilities.RestartMaya()
 

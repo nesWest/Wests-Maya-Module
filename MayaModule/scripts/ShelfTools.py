@@ -49,3 +49,12 @@ def RefreshShelf(selfName : str, shelf : dict) -> None:
                                       enableCommandRepeat=button['enableCommandRepeat'] )
         
 #need to write a function that removes all shelves for uninstall.
+def RemoveAllShelves():
+    gShelfTopLevel = maya.mel.eval('global string $gShelfTopLevel;$tmp_1=$gShelfTopLevel;')
+
+    shelves = GetShelves()
+    for shelf in shelves.keys():
+        if cmds.shelfLayout(shelf,p=gShelfTopLevel, ex=1):
+            maya.mel.eval('deleteShelfTab ' + shelf)
+
+    cmds.saveAllShelves( gShelfTopLevel )
