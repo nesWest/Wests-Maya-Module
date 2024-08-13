@@ -14,7 +14,7 @@
             },
             {
                 "label": "Restart Maya",
-                "annotation": "Restarts Maya On Click (Unstable)",
+                "annotation": "Restarts Maya On Click",
                 "image1": "restart.png",
                 "command": "from Utilities import RestartMaya; RestartMaya()",
                 "enableCommandRepeat":false

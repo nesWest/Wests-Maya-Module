@@ -5,7 +5,7 @@
 
 	authors     West Foulks (WestFoulks@gmail.com)
 
-	brief       Script file for testing pyqt as a I learn.
+	brief       Window to show information regarding this module allow reinstallation upon updates
 '''
 try:
     from PySide2 import QtCore, QtWidgets #in 2024 QT5
@@ -28,16 +28,16 @@ import maya.cmds as cmds
 import maya.OpenMayaUI as omui
 from maya.app.general.mayaMixin import MayaQWidgetDockableMixin
 
-
 #gets maya window
 def maya_main_window():
     maya_window_ptr = omui.MQtUtil.mainWindow()
     return wrapInstance(int(maya_window_ptr),QtWidgets.QWidget)
 
 class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
+    
     win_instance = None
 
-    def __init__(self, parent=maya_main_window()):
+    def __init__(self, parent=maya_main_window()) -> None:
         super().__init__(parent)
         self.setWindowTitle("West's Maya Tools")
         self.setMinimumSize(200,300)
@@ -48,49 +48,46 @@ class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
         self.location_dropdown.setContentsMargins(0,0,0,0)
     
         #Possible Shelves to Install
-        self.Shelf_titles = []
-        self.shelf_Check = []
-
-        for i in range(0,4):
-            self.Shelf_titles.append("test" + str(i))
-            self.shelf_Check.append(QtWidgets.QCheckBox(""))
+        self.shelfChecks = []
+ 
 
         #Confirm Cancel Buttons
         self.install_button = QtWidgets.QPushButton("(Re)Install")
-        self.cancel_button = QtWidgets.QPushButton("Uninstall")
+        self.uninstall_button = QtWidgets.QPushButton("Uninstall")
         
         #Sub layout Shelves
         layout_form = QtWidgets.QFormLayout()
         layout_form.addRow("Install Locations (of .mod)", self.location_dropdown)
-
-        for i in range(0,4):
-            layout_form.addRow(self.Shelf_titles[i],self.shelf_Check[i])
-
         layout_form.setContentsMargins(0,0,0,0)
+        for shelves in JsonReader.GetShelves().keys():
+            check = QtWidgets.QCheckBox('')
+            self.shelfChecks.append(check) 
+            layout_form.addRow(shelves, check) 
 
-        #Subl Layout Confirm Cancel
-        layout_ConfirmCancel = QtWidgets.QHBoxLayout()
-        layout_ConfirmCancel.setContentsMargins(0,0,0,0)
-        layout_ConfirmCancel.addWidget(self.install_button)
-        layout_ConfirmCancel.addWidget(self.cancel_button)
+        
+        #Subl Layout (re)Install uninstall
+        layout_installUninstall = QtWidgets.QHBoxLayout()
+        layout_installUninstall.setContentsMargins(0,0,0,0)
+        layout_installUninstall.addWidget(self.install_button)
+        layout_installUninstall.addWidget(self.uninstall_button)
         
         #Main Layout
         layout_main = QtWidgets.QVBoxLayout()
         layout_main.addLayout(layout_form)
-        layout_main.addLayout(layout_ConfirmCancel)
+        layout_main.addLayout(layout_installUninstall)
         
         self.setLayout(layout_main)
 
         #Connect Buttons
         self.install_button.clicked.connect(self._reInstall)
-        self.cancel_button.clicked.connect(self._unInstall)
+        self.uninstall_button.clicked.connect(self._unInstall)
 
     def _getEnvPaths(self) -> list:
         paths = os.environ['MAYA_MODULE_PATH'].split(';')
         paths.pop()
         return paths
     
-    def _reInstall(self):
+    def _reInstall(self) -> None:
         #Create .Mod File
         selectedPath = self.location_dropdown.currentText()
         moduleName = JsonReader.GetModuleName()
@@ -112,7 +109,7 @@ class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
         #Restart Maya
         Utilities.RestartMaya()
     
-    def _unInstall(self):
+    def _unInstall(self) -> None:
         #Remove .Mod Files
         paths = self._getEnvPaths()
 
@@ -135,7 +132,7 @@ class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
             cls.win_instance.show(dockable=True)
         else:
             cls.win_instance.raise_()
-            cls.win_instance.activate()
+
         
 
 
