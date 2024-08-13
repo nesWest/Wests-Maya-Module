@@ -34,16 +34,17 @@ def maya_main_window():
     maya_window_ptr = omui.MQtUtil.mainWindow()
     return wrapInstance(int(maya_window_ptr),QtWidgets.QWidget)
 
-class HelloQTWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
+class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
+    win_instance = None
+
     def __init__(self, parent=maya_main_window()):
         super().__init__(parent)
         self.setWindowTitle("West's Maya Tools")
         self.setMinimumSize(200,300)
-        self.setModulePath("")
 
         #Possible Intall Locations
         self.location_dropdown = QtWidgets.QComboBox()
-        self.location_dropdown.addItems(self.getEnvPaths())
+        self.location_dropdown.addItems(self._getEnvPaths())
         self.location_dropdown.setContentsMargins(0,0,0,0)
     
         #Possible Shelves to Install
@@ -81,27 +82,15 @@ class HelloQTWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
         self.setLayout(layout_main)
 
         #Connect Buttons
-        self.install_button.clicked.connect(self.reInstall)
-        self.cancel_button.clicked.connect(self.unInstall)
+        self.install_button.clicked.connect(self._reInstall)
+        self.cancel_button.clicked.connect(self._unInstall)
 
-    def getName(self) -> str:
-        return self.name_line_edit.text()
-    
-    def createCube(self):
-        cube = cmds.polyCube(name=self.getName())
-    
-    def createSphere(self):
-        cmds.polySphere(name=self.getName())
-
-    def getEnvPaths(self) -> list:
+    def _getEnvPaths(self) -> list:
         paths = os.environ['MAYA_MODULE_PATH'].split(';')
         paths.pop()
         return paths
     
-    def setModulePath(self, path):
-        self.modulePath = path + "/MayaModule/"
-
-    def reInstall(self):
+    def _reInstall(self):
         #Create .Mod File
         selectedPath = self.location_dropdown.currentText()
         moduleName = JsonReader.GetModuleName()
@@ -113,7 +102,7 @@ class HelloQTWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
             os.remove(filename)
 
         modFile = open(filename, 'x')
-        line = '+ ' + moduleName + ' ' + versionNumber + ' ' + self.modulePath
+        line = '+ ' + moduleName + ' ' + versionNumber + ' ' + JsonReader.UserData_GetModulePath()
         modFile.write(line)
         modFile.close()
 
@@ -123,9 +112,9 @@ class HelloQTWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
         #Restart Maya
         Utilities.RestartMaya()
     
-    def unInstall(self):
+    def _unInstall(self):
         #Remove .Mod Files
-        paths = self.getEnvPaths()
+        paths = self._getEnvPaths()
 
         for path in paths:
             filename = path + '/WestsModules.mod'
@@ -137,10 +126,16 @@ class HelloQTWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
 
         Utilities.RestartMaya()
 
-win = HelloQTWindow()
-def ShowWindow():
-    if win:
-        win.show(dockable=True)
-    
+    @classmethod    
+    def showWindow(cls) -> None:
+        if cls.win_instance == None:
+            cls.win_instance = ModuleWindow()
+        
+        if cls.win_instance.isHidden():
+            cls.win_instance.show(dockable=True)
+        else:
+            cls.win_instance.raise_()
+            cls.win_instance.activate()
+        
 
 

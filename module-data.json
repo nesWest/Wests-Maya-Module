@@ -41,10 +41,10 @@
                 "enableCommandRepeat":false
             },
             {
-                "label": "TestPySide",
+                "label": "ModuleDockableWindow",
                 "annotation": "Exports a Animation for a skeletal Mesh",
                 "image1": "Dash_SearchTools.png",
-                "command": "from ModuleWindow import ShowWindow; ShowWindow()",
+                "command": "from ModuleWindow import ModuleWindow as MW; MW.showWindow()",
                 "enableCommandRepeat":false
             }
             

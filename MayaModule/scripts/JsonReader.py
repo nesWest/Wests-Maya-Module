@@ -100,3 +100,33 @@ def UserData_GetExportLocation(exportInfo : str) -> str:
 
     return data
 
+
+def UserData_SetModulePath(path : str) -> None:
+    data = GetData(userDataName)
+
+    try:
+      data['Info'].update({"ModulePath" : path})
+    except:
+       data.update({'Info': {"ModulePath" : path}})
+
+    path = GetPath(userDataName)
+    with open(path, 'w') as file:
+      json.dump(data, file, indent=4)
+      file.close()
+
+    return
+
+def UserData_GetModulePath() -> str:
+    data = GetData(userDataName)
+
+    try:
+      data =  data['Info']['ModulePath'] 
+    except:
+      data = ''
+
+    return data
+
+
+
+
+
