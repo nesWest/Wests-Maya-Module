@@ -47,7 +47,11 @@ def RefreshShelf(selfName : str, shelf : dict) -> None:
                                       image1=button['image1'], 
                                       command=button['command'],
                                       enableCommandRepeat=button['enableCommandRepeat'] )
-        
+
+def AddShelf(name : str) -> None:
+    shelves = GetShelves()
+    RefreshShelf(name, shelves[name])
+
 #need to write a function that removes all shelves for uninstall.
 def RemoveAllShelves():
     gShelfTopLevel = maya.mel.eval('global string $gShelfTopLevel;$tmp_1=$gShelfTopLevel;')

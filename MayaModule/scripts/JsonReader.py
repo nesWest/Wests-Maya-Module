@@ -100,7 +100,6 @@ def UserData_GetExportLocation(exportInfo : str) -> str:
 
     return data
 
-
 def UserData_SetModulePath(path : str) -> None:
     data = GetData(userDataName)
 

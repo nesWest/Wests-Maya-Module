@@ -49,20 +49,20 @@ class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
     
         #Possible Shelves to Install
         self.shelfChecks = []
- 
+        for shelf in JsonReader.GetShelves().keys():
+            self.shelfChecks.append(QtWidgets.QCheckBox(shelf))
+            
 
-        #Confirm Cancel Buttons
-        self.install_button = QtWidgets.QPushButton("(Re)Install")
-        self.uninstall_button = QtWidgets.QPushButton("Uninstall")
+        #reinstall uninstall Buttons
+        self.install_button = QtWidgets.QPushButton('(Re)Install')
+        self.uninstall_button = QtWidgets.QPushButton('Uninstall')
         
         #Sub layout Shelves
         layout_form = QtWidgets.QFormLayout()
-        layout_form.addRow("Install Locations (of .mod)", self.location_dropdown)
+        layout_form.addRow('Install Locations (of .mod)', self.location_dropdown)
         layout_form.setContentsMargins(0,0,0,0)
-        for shelves in JsonReader.GetShelves().keys():
-            check = QtWidgets.QCheckBox('')
-            self.shelfChecks.append(check) 
-            layout_form.addRow(shelves, check) 
+        for shelf in self.shelfChecks:
+            layout_form.addRow('', shelf) 
 
         
         #Subl Layout (re)Install uninstall
@@ -104,7 +104,11 @@ class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
         modFile.close()
 
         #create Shelves
-        ShelfTools.RefreshShelves()
+        ShelfTools.RemoveAllShelves()
+        for shelf in self.shelfChecks:
+            if shelf.checkState():
+                ShelfTools.AddShelf(shelf.text())
+        
 
         #Restart Maya
         Utilities.RestartMaya()
