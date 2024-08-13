@@ -1,5 +1,6 @@
 {
     "Info": {
+        "ModuleName": "WestsMayaModule",
         "VersionNumber": 1.0
     },
     "Shelves": {
@@ -38,7 +39,15 @@
                 "image1": "out_USD_SkelAnimation_200.png",
                 "command": "from ExportTools import AnimationExporter; AnimationExporter()",
                 "enableCommandRepeat":false
+            },
+            {
+                "label": "TestPySide",
+                "annotation": "Exports a Animation for a skeletal Mesh",
+                "image1": "Dash_SearchTools.png",
+                "command": "from ModuleWindow import ShowWindow; ShowWindow()",
+                "enableCommandRepeat":false
             }
+            
         ],
         "ExportTools": [
             {

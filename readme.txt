@@ -8,6 +8,9 @@ Installation
 --2. Choose Shelf Tools to install-- Not complete
 
 TODO:
+add Script reloader untility so maya doesnt need to be restarted for new scripts
+learn pyside
+
 add Better Updating Process (now must delete shelf save then DRAG_INTO_MAYA)
 add save location of .mod to user-data.json for easy deletion or updating
 add shelf configuration to config

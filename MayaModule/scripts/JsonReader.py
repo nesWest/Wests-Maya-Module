@@ -62,6 +62,9 @@ def GetShelves() -> dict:
 def GetVersionNumber() -> float :
     return GetData()['Info']['VersionNumber']
 
+def GetModuleName() -> str :
+    return GetData()['Info']['ModuleName']
+
 '''
     Name        UserData_NewExport
     Desc        Saves the File path for the corrisponding export

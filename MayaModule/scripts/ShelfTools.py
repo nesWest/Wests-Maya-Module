@@ -12,8 +12,10 @@ import os
 import maya.cmds as cmds
 import maya.mel
 
-from JsonReader import GetShelves
-
+try: #To use DRAG_INTO_MAYA
+    from JsonReader import GetShelves
+except:
+    from MayaModule.scripts.JsonReader import GetShelves
 
 
 '''
@@ -45,3 +47,5 @@ def RefreshShelf(selfName : str, shelf : dict) -> None:
                                       image1=button['image1'], 
                                       command=button['command'],
                                       enableCommandRepeat=button['enableCommandRepeat'] )
+        
+#need to write a function that removes all shelves for uninstall.
