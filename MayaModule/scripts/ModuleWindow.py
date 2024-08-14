@@ -104,11 +104,11 @@ class ModuleWindow(MayaQWidgetDockableMixin, QtWidgets.QDialog):
         modFile.close()
 
         #create Shelves
-        ShelfTools.RemoveAllShelves()
         for shelf in self.shelfChecks:
             if shelf.checkState():
-                ShelfTools.AddShelf(shelf.text())
-        
+                ShelfTools.AddShelf(shelf.text()) #also updates shelf
+            else:
+                ShelfTools.RemoveShelf(shelf) #remove shelf if it exists
 
         #Restart Maya
         Utilities.RestartMaya()

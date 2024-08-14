@@ -62,3 +62,11 @@ def RemoveAllShelves():
             maya.mel.eval('deleteShelfTab ' + shelf)
 
     cmds.saveAllShelves( gShelfTopLevel )
+
+def RemoveShelf(shelf : str):
+    gShelfTopLevel = maya.mel.eval('global string $gShelfTopLevel;$tmp_1=$gShelfTopLevel;')
+
+    if cmds.shelfLayout(shelf,p=gShelfTopLevel, ex=1):
+        maya.mel.eval('deleteShelfTab ' + shelf)
+
+    cmds.saveAllShelves( gShelfTopLevel )
